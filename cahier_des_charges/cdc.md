@@ -49,7 +49,7 @@ Après authentification grâce aux identifiants à leur disposition, les visiteu
 
 Ils ont accès en modification à la fiche tout au long du mois et peuvent y ajouter de nouvelles données ou supprimer des éléments saisis.
 
-Les frais saisis peuvent remonter jusqu’à un an en arrière (au mois d’août 2021, on peut saisir des frais engagés de septembre 2020 à août 2021).
+Les fiches de frais saisies peuvent être consultées par un visiteur jusqu’à 12 mois en arrière (au mois d’août 2023, on peut consulter des frais engagés de septembre 2022 à août 2023).
 
 #### Clôture
 
