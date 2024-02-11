@@ -37,7 +37,7 @@ Le remboursement de l'ensemble des frais engagés par les visiteurs s’organise
 La gestion est la suivante :
 
 - à chaque dépense type (hôtel, repas...) correspond un montant forfaitaire appliqué (on parle de frais « forfaitisé »). Le justificatif n’est pas demandé (les rapports de visite serviront de preuve) mais doivent être conservés pendant trois années par les visiteurs. Des contrôles réguliers sont faits par les délégués régionaux qui peuvent donner lieu à des demandes de remboursement de trop perçu par le visiteur ;
-- pour toute dépense en dehors du forfait (repas en présence d'un spécialiste lors d'une animation, achat de fournitures, réservation de salle pour une conférence, etc.), le visiteur enregistrera la date, le montant et le libellé de la dépense. Il doit fournir au service comptable une facture acquittée. Le système à produire doit lui indiquer le nombre de justificatifs pris en compte dans le remboursement.
+- pour toute dépense en dehors du forfait (repas en présence d'un spécialiste lors d'une animation, achat de fournitures, réservation de salle pour une conférence, etc.), le visiteur enregistrera la date, le montant et le libellé de la dépense. Il doit fournir au service comptable une facture acquittée.
 
 ### Processus à informatiser
 
@@ -53,10 +53,12 @@ Les fiches de frais saisies peuvent être consultées par un visiteur jusqu’à
 
 #### Clôture
 
-La fiche est clôturée au dernier jour du mois. Cette clôture sera réalisée par l’application selon l’une des modalités suivantes :
+La clôture d'une fiche est réalisée selon l’une des modalités suivantes :
 
-- à la première saisie pour le mois N par le visiteur, sa fiche du mois précédent est clôturée si elle ne l’est pas déjà ;
-- au début de la campagne de validation des fiches par le service comptable, un script est lancé qui clôture toutes les fiches non clôturées du mois qui va être traité.
+- à la première saisie pour le mois N par le visiteur, sa fiche du mois N-1 est clôturée (si elle ne l’est pas déjà) ; par exemple, si un visiteur saisit des frais pour le mois de septembre dès le 1er septembre (premier jour de disponibilité pour cette fiche), sa fiche d’août est clôturée automatiquement ; un visiteur doit donc s'assurer que la saisie des frais du mois N-1 est toujours terminée avant de commencer sa saisie du mois N ;
+- au début de la campagne de validation des fiches par le service comptable (voir section suivante), l'application clôture automatiquement toutes les fiches non clôturées du mois qui va être traité (le mois précédent) ; par exemple, la campagne de validation des fiches du mois d'août débute le 10 septembre et toutes les fiches non clôturées d'août sont clôturées automatiquement.
+
+Ainsi, une fiche du mois N-1 est toujours clôturée entre le 1er et le 10 (inclus) du mois N.
 
 #### Campagne de validation
 
@@ -78,8 +80,6 @@ L'**état** de la fiche de frais fera l'objet d'un suivi précis qui sera affich
 
 ![état_fiche](/cahier_des_charges/état_fiche_de_frais.png)
 
-Les visiteurs doivent pouvoir consulter sur l'année écoulée, pour chaque mois, le montant du remboursement effectué par le laboratoire et le nombre de prestations pris en compte.
-
 Actuellement, lorsque la fiche de frais arrive dans l'état « Remboursée », une fiche papier de remboursement de frais est éditée par le service comptabilité et remise au visiteur ([PDF fiche de remboursement de frais engagés](/cahier_des_charges/fiche_remboursement_frais.pdf)).
 
 ## Cahier des charges
@@ -88,7 +88,7 @@ Actuellement, lorsque la fiche de frais arrive dans l'état « Remboursée �
 
 #### Définition
 
-Le suivi des frais est actuellement géré de plusieurs façons selon le laboratoire d'origine des visiteurs. On souhaite uniformiser cette gestion. L'application doit permettre d'enregistrer tout frais engagé, aussi bien pour l'activité directe (déplacement, restauration et hébergement) que pour les activités annexes (événementiel, conférences, autres), et de présenter un suivi daté des opérations menées par le service comptable (réception des pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué).
+Le suivi des frais est actuellement géré de plusieurs façons selon le laboratoire d'origine des visiteurs. On souhaite uniformiser cette gestion. L'application doit permettre d'enregistrer tout frais engagé, aussi bien pour l'activité directe (déplacement, restauration et hébergement) que pour les activités annexes (événementiel, conférences, autres), et de présenter un suivi daté des opérations menées par le service comptable (mises à jour de l'état de la fiche).
 
 #### Forme
 
@@ -103,7 +103,6 @@ L'application destinée aux visiteurs, délégués et responsables de secteur se
 - Gestionnaire de base de données MySQL
 - JDBC pour l'interface entre le code Java et le SGBDR
 - Toute autre bibliothèque (internes au JDK ou externes) que vous jugerez nécessaire
-  s
 
 #### Modules
 
@@ -132,13 +131,13 @@ Cette application est destinée aux visiteurs médicaux et personnels du service
 
 #### Cas d'utilisation
 
-Les besoins sont exprimés ici à l'aide des cas d'utilisation : le diagramme des cas d'utilisation pour la vue synthétique de « qui fait quoi », puis une fiche par cas d'utilisation pour décrire les échanges entre le système et l'utilisateur.
+Les besoins sont exprimés ici à l'aide des cas d'utilisation : le diagramme des cas d'utilisation pour la vue synthétique de « qui fait quoi », puis une fiche par cas d'utilisation pour décrire les échanges entre le système et l'utilisateur.
 
 ### Diagramme des cas d'utilisation
 
 ![diagramme_ucs](/cahier_des_charges/diagramme_ucs.png)
 
-### Les fiches des cas d'utilisation
+### Les fiches des cas d'utilisation (_Use Case_, ou _UC_)
 
 #### Cas d'utilisation 1
 
@@ -151,7 +150,7 @@ Les besoins sont exprimés ici à l'aide des cas d'utilisation : le diagramme de
 
 1. Le système affiche un formulaire de connexion
 2. L'utilisateur saisit son login et son mot de passe et valide
-3. Le système contrôle les informations de connexion, informe que le profil Visiteur ou Comptable est activé, et maintient affichée l'identité du visiteur médical / comptable connecté.
+3. Le système contrôle les informations de connexion, informe que le profil _Visiteur_ ou _Comptable_ est activé, et maintient affichée l'identité du visiteur médical / comptable connecté.
 
 - Exceptions :
 
@@ -184,7 +183,6 @@ Les besoins sont exprimés ici à l'aide des cas d'utilisation : le diagramme de
   - 4.a. Une valeur modifiée n’est pas numérique : le système indique « Valeur numérique attendue ». Retour à 3.
   - 6.a Un des champs n'est pas renseigné : le système indique : « Le champ date (ou libellé ou montant) doit être renseigné ».
   - 6.b La date d'engagement des frais hors forfait est invalide : le système indique « La date d'engagement doit être valide ». Retour à 5.
-  - 6.c La date d'engagement des frais hors forfait date de plus d’un an. Le système indique « La date d'engagement doit se situer dans l’année écoulée ». Retour à 5.
   - 7.1 L’utilisateur sélectionne un frais hors forfait pour suppression.
     - 7.2 Le système enregistre cette suppression après une demande de confirmation.
 
@@ -274,12 +272,11 @@ La sélection d'un mois pourra être facilitée par l'IHM. Il est possible de pr
 
 ## Enregistrement des données
 
-On fournira un diagramme entité-association et le schéma relationnel correspondant (on pourra utiliser [MoCoDo](http://www.mocodo.net/)). Un jeu de données de test devra être produit et pourra même être automatiquement généré par un outil (ex. : [GenerateData](http://www.generatedata.com))
+On fournira un diagramme entité-association et le schéma relationnel correspondant (on pourra utiliser [Looping](https://www.looping-mcd.fr/) ou [MoCoDo](http://www.mocodo.net/)). Un jeu de données de test devra être produit et pourra même être éventuellement généré par un outil (ex. : [GenerateData](http://www.generatedata.com))
 
 ## Évolutions possibles
 
 - Hacher le mot de passe dans la base de données si ce n'est pas déjà fait
-- Distinguer l’indemnité kilométrique en fonction de la puissance du véhicule
 - Au niveau de l'UC « Consulter fiche frais », rendre la fiche de frais facilement imprimable, par exemple proposer la génération d'un fichier PDF.
 - Au niveau des UCs « Saisir fiche frais » et "Consulter fiche frais", prévoir l'affichage des éléments intermédiaires de calcul permettant d'apprécier le montant correspondant à chaque ligne de frais forfaitisé, ainsi que les totaux des éléments forfaitisés et hors forfait, de sorte à être plus proche du document relatif à la fiche de demande de remboursement.
 - Modifier la base de données (et l’application) pour que l’on connaisse le statut d’une ligne de frais hors forfait (point 8 de l’UC « Valider Frais » qui ajoute le texte « REFUSÉ » en début de libellé.
