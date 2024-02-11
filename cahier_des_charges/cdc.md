@@ -43,13 +43,13 @@ La gestion est la suivante :
 
 Actuellement, au plus tard le 20 de chaque mois, le service comptable adresse aux visiteurs la fiche de demande de remboursement pour le mois en cours ([PDF fiche d'état de frais engagés](/cahier_des_charges/fiche_etat_frais.pdf)). L'application devra permettre de produire automatiquement l'équivalent de ces fiches de manière à les mettre à disposition des visiteurs pour la saisie en ligne.
 
-#### Saisie
+#### Saisie et consultation
 
 Après authentification grâce aux identifiants à leur disposition, les visiteurs saisissent les quantités de frais forfaitisés et les frais hors forfait engagés pour le mois écoulé.
 
 Ils ont accès en modification à la fiche tout au long du mois et peuvent y ajouter de nouvelles données ou supprimer des éléments saisis.
 
-Les frais saisis peuvent remonter jusqu’à un an en arrière (au mois d’août 2021, on peut saisir des frais engagés de septembre 2020 à août 2021).
+Les fiches de frais saisies peuvent être consultées par un visiteur jusqu’à 12 mois en arrière (au mois d’août 2023, on peut consulter des frais engagés de septembre 2022 à août 2023).
 
 #### Clôture
 
