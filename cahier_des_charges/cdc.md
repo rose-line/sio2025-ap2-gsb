@@ -41,7 +41,7 @@ La gestion est la suivante :
 
 ### Processus à informatiser
 
-Actuellement, au plus tard le 20 de chaque mois, le service comptable adresse aux visiteurs la fiche de demande de remboursement pour le mois en cours ([PDF fiche d'état de frais engagés](/cahier_des_charges/fiche_etat_frais.pdf)). L'application devra permettre de produire automatiquement l'équivalent de ces fiches de manière à les mettre à disposition des visiteurs pour la saisie en ligne.
+Actuellement, au plus tard le 20 de chaque mois, le service comptable adresse aux visiteurs la fiche d'état de frais pour le mois en cours ([PDF fiche d'état de frais engagés](/cahier_des_charges/fiche_etat_frais.pdf)). L'application devra permettre de produire automatiquement l'équivalent de ces fiches de manière à les mettre à disposition des visiteurs pour la saisie en ligne.
 
 #### Saisie et consultation
 
@@ -292,3 +292,5 @@ On fournira un diagramme entité-association et le schéma relationnel correspon
   - plateformes de gestion de projet agile (méthode Kanban => Trello, Notion...)
   - tout autre outil, en ligne ou non, que vous jugerez productif ; sauf si cela est nécessaire (ex. : votre IDE comme VS Code), **évitez d'utiliser des applications qui ne permettent pas l'édition collaborative** (exemple de mauvaise pratique : travailler chacun sur un bout du rapport et se passer les fichiers en espérant qu'une version qui contient tout dans le bon ordre et sans doublon émerge facilement)
   - NB : tous les outils utilisés seront référencés dans vos rapports
+
+### Dictionnaire de données correspondant à ce cahier des charges
