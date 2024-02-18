@@ -41,3 +41,7 @@ On rappelle que :
 - le CCF E5 (épreuve pratique coef 4) est basé sur l'un des 3 AP (choisi par le jury parmi 2 AP que vous présenterez)
 
 - les AP font également partie des contextes professionnels évalués lors du CCF E4 (oral professionnel coef 4)
+
+## Projet+BDD de démarrage
+
+[Sur ce dépôt](https://github.com/rose-line/sio2025-ap2-gsb-etudiants)
